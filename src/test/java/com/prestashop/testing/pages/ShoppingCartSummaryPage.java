@@ -1,0 +1,19 @@
+package com.prestashop.testing.pages;
+
+import BaseEntities.BasePage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class ShoppingCartSummaryPage extends BasePage {
+
+    public ShoppingCartSummaryPage(WebDriver driver){
+        super(driver);
+    }
+
+    private By proceedToCheckoutButton = By.xpath("//a[@title='Proceed to checkout']");
+
+    public WebElement getProceedToCheckoutButton(){
+        return driver.findElement(proceedToCheckoutButton);
+    }
+}

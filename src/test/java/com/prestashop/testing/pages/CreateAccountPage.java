@@ -1,12 +1,12 @@
 package com.prestashop.testing.pages;
 
+import BaseEntities.BasePage;
+import com.prestashop.testing.wrappers.Dropdown;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
-
-import java.util.List;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 public class CreateAccountPage extends BasePage {
 
@@ -15,15 +15,18 @@ public class CreateAccountPage extends BasePage {
     }
 
     private By createField = By.xpath("//*[text()='Create an account']");
-    private By manField = By.id("id_gender1");
-    private By womanField = By.id("id_gender2");
+    private By manButton = By.id("uniform-id_gender1");
+    private By womanButton = By.id("id_gender2");
     private By firstNameField = By.id("customer_firstname");
     private By lastNameField = By.id("customer_lastname");
     private By passwordField = By.id("passwd");
     private By dayField = By.id("days");
     private By monthField = By.id("months");
     private By yearField = By.id("cuselFrame-years");
-    private By registerButton = By.name("Register");
+    private By registerButton = By.xpath("//span[text()='Register']");
+    private By newsletterCheckbox = By.id("newsletter");
+
+    Actions action = new Actions(driver);
 
     public String getCreateField() {
         return driver.findElement(createField).getText();
@@ -33,49 +36,46 @@ public class CreateAccountPage extends BasePage {
         return driver.findElement(registerButton);
     }
 
-    public CreateAccountPage setFirstName(String firstName) {
+    public void selectMan(){
+        driver.findElement(manButton).click();
+    }
+
+    public void selectWoman(){
+        driver.findElement(womanButton).click();
+    }
+
+    public void setFirstName(String firstName) {
         driver.findElement(firstNameField).sendKeys(firstName);
-        return this;
     }
 
-    public CreateAccountPage setLastName(String lastName) {
+    public void setLastName(String lastName) {
         driver.findElement(lastNameField).sendKeys(lastName);
-        return this;
     }
 
-    public CreateAccountPage setPassword(String password) {
+    public void setPassword(String password) {
         driver.findElement(passwordField).sendKeys(password);
-        return this;
     }
 
-    Select dropdownDay = new Select(driver.findElement(dayField));
-    List<WebElement> dropdownDayList = dropdownDay.getOptions();
-
-    public CreateAccountPage setDays(String day){
-        dropdownDay.selectByValue(day);
-        return this;
+    public void setDay(String day){
+        new Dropdown(driver, "uniform-days").select(day);
     }
 
-    Select dropdownMonth = new Select(driver.findElement(monthField));
-    List<WebElement> dropdownMonthList = dropdownMonth.getOptions();
-
-    public CreateAccountPage setMonth(String month){
-        dropdownMonth.selectByValue(month);
-        return this;
+    public void setMonth(String month){
+        new Dropdown(driver, "uniform-months").select(month);
     }
 
-    Select dropdownYears = new Select(driver.findElement(yearField));
-    List<WebElement> getDropdownYearsList = dropdownYears.getOptions();
-
-    public CreateAccountPage setYears(String years){
-        dropdownYears.selectByValue(years);
-        return this;
+    public void setYear(String year){
+        driver.findElement(By.xpath("//div[@id='cuselFrame-years']")).click();
+        WebElement yearSelect = driver.findElement(By.xpath(String.format("//span[@val='%s']", year)));
+        action.moveToElement(yearSelect).build().perform();
+        yearSelect.click();
     }
 
-    public MyAccountPage clickRegister() {
+    public void selectNewsletterCheckbox(){
+        driver.findElement(newsletterCheckbox).click();
+    }
+
+    public void clickRegister() {
         getRegisterButton().click();
-        return new MyAccountPage(driver);
     }
-
-
 }

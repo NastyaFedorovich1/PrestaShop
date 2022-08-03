@@ -1,4 +1,4 @@
-package com.prestashop.testing.pages;
+package BaseEntities;
 
 import org.openqa.selenium.WebDriver;
 
