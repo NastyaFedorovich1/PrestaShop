@@ -53,7 +53,7 @@ public class BaseTest {
         shippingPage = new ShippingPage(driver);
     }
 
-    //@AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void closeBrowser() {
         driver.quit();
     }
