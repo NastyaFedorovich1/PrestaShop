@@ -25,6 +25,7 @@ public class CreateAccountPage extends BasePage {
     private By yearField = By.id("cuselFrame-years");
     private By registerButton = By.xpath("//span[text()='Register']");
     private By newsletterCheckbox = By.id("newsletter");
+    private By errorMessage = By.xpath("//p[contains(text(), 'There is 1 error')]");
 
     Actions action = new Actions(driver);
 
@@ -34,6 +35,10 @@ public class CreateAccountPage extends BasePage {
 
     public WebElement getRegisterButton() {
         return driver.findElement(registerButton);
+    }
+
+    public WebElement getErrorMessage(){
+        return driver.findElement(errorMessage);
     }
 
     public void selectMan(){

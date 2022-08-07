@@ -5,9 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Product1Page extends BasePage {
+public class ProductPage extends BasePage {
 
-    public Product1Page(WebDriver driver){
+    public ProductPage(WebDriver driver){
         super(driver);
     }
 
