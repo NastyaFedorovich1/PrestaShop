@@ -4,6 +4,7 @@ import BaseEntities.BaseStep;
 import com.prestashop.testing.pages.ShoppingCartSummaryPage;
 import com.prestashop.testing.pages.StartPage;
 import com.prestashop.testing.pages.WomenPage;
+import com.prestashop.testing.utils.AllureUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,7 +22,7 @@ public class CartStep extends BaseStep {
 
         startPage.openPage();
         startPage.getWomenButton().click();
-        womenPage.clickProduct1();
+        womenPage.clickAddToCartTShirtButton();
         womenPage.checkoutClick();
     }
 
@@ -32,5 +33,4 @@ public class CartStep extends BaseStep {
         wait.until(ExpectedConditions.invisibilityOf(shoppingCartSummaryPage.getFadedShortSleeveTShirtField()));
         driver.navigate().refresh();
     }
-
 }

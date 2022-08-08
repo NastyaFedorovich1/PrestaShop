@@ -17,13 +17,11 @@ public class WomenPage extends BasePage {
 
     Actions action = new Actions(driver);
 
-    public void clickProduct1(){
+    public void clickAddToCartTShirtButton(){
         action.moveToElement(driver.findElement(productTShirts)).moveToElement(driver.findElement(addToCartTShirtsButton)).click().build().perform();
     }
 
     public void checkoutClick(){
         driver.findElement(goToShoppingCartSummary).click();
     }
-
-
 }

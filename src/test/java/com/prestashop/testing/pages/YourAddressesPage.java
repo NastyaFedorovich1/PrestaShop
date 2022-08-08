@@ -1,8 +1,7 @@
 package com.prestashop.testing.pages;
 
 import BaseEntities.BasePage;
-import com.prestashop.testing.wrappers.Dropdown;
-import com.prestashop.testing.wrappers.SelectCityAndState;
+import com.prestashop.testing.wrappers.Select;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -44,7 +43,7 @@ public class YourAddressesPage extends BasePage {
     public void setCityField(String city) { driver.findElement(cityField).sendKeys(city); }
 
     public void setCountry(String city){
-        new SelectCityAndState(driver, "uniform-id_country").select(city);
+        new Select(driver, "uniform-id_country").select(city);
     }
 
     public void setPhoneField(String phone) {
@@ -56,7 +55,7 @@ public class YourAddressesPage extends BasePage {
     }
 
     public void setState(String state){
-        new SelectCityAndState(driver, "uniform-id_state").select(state);
+        new Select(driver, "uniform-id_state").select(state);
     }
 
     public void setNameAddressesField(String nameAddresses) {

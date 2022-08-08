@@ -26,5 +26,4 @@ public class ShippingPage extends BasePage {
     public WebElement getErrorMessage(){
         return driver.findElement(errorMessage);
     }
-
 }

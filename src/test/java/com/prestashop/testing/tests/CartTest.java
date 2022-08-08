@@ -7,13 +7,13 @@ import org.testng.annotations.Test;
 public class CartTest extends BaseTest {
 
     @Test
-    public void AddToCart(){
+    public void AddToCartTest(){
         cartStep.addToCartTShirt();
         Assert.assertTrue(shoppingCartSummaryPage.getFadedShortSleeveTShirtField().isDisplayed());
     }
 
     @Test
-    public void addToCartAndDeleteProductFromCart(){
+    public void addToCartAndDeleteProductFromCartTest(){
         cartStep.addToCartTShirt();
         cartStep.deleteFromCart();
         Assert.assertTrue(shoppingCartSummaryPage.getEmptyCartMessage().isDisplayed());
@@ -39,7 +39,7 @@ public class CartTest extends BaseTest {
     }
 
     @Test
-    public void OrderOneItemWithoutTermsAgreement(){
+    public void OrderOneItemWithoutTermsAgreementTest(){
         createAccountStep.proceedToAccountCreation();
         createAccountStep.fillNewAccountFields("woman", "Nastya", "Fedorovich", "555888",
                 "2", "5", "1997");

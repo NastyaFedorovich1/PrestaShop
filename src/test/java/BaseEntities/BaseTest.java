@@ -4,6 +4,7 @@ import com.prestashop.testing.pages.*;
 import com.prestashop.testing.steps.CartStep;
 import com.prestashop.testing.steps.CreateAccountStep;
 import com.prestashop.testing.steps.CreateAddressesStep;
+import com.prestashop.testing.utils.AllureUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

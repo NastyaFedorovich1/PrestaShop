@@ -3,12 +3,12 @@ package com.prestashop.testing.wrappers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SelectCityAndState {
+public class Select {
 
     WebDriver driver;
     String label;
 
-    public SelectCityAndState(WebDriver driver, String label){
+    public Select(WebDriver driver, String label){
         this.driver = driver;
         this.label = label;
     }
