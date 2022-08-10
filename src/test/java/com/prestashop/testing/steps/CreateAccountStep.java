@@ -4,6 +4,7 @@ import BaseEntities.BaseStep;
 import com.prestashop.testing.pages.CreateAccountPage;
 import com.prestashop.testing.pages.LoginPage;
 import com.prestashop.testing.pages.StartPage;
+import com.prestashop.testing.utils.AllureUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
@@ -22,6 +23,7 @@ public class CreateAccountStep extends BaseStep {
         startPage.clickLogin();
         loginPage.setEmail();
         loginPage.clickCreate();
+        AllureUtils.takeScreenshot(driver);
     }
 
     @Step("Fill field when create account")
@@ -38,5 +40,6 @@ public class CreateAccountStep extends BaseStep {
         createAccountPage.setDay(day);
         createAccountPage.setMonth(month);
         createAccountPage.setYear(year);
+        AllureUtils.takeScreenshot(driver);
     }
 }

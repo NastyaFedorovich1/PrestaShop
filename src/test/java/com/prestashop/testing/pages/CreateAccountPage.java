@@ -1,6 +1,7 @@
 package com.prestashop.testing.pages;
 
 import BaseEntities.BasePage;
+import com.prestashop.testing.utils.AllureUtils;
 import com.prestashop.testing.wrappers.Dropdown;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

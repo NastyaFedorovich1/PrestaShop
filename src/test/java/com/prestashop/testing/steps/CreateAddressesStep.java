@@ -2,6 +2,7 @@ package com.prestashop.testing.steps;
 
 import BaseEntities.BaseStep;
 import com.prestashop.testing.pages.YourAddressesPage;
+import com.prestashop.testing.utils.AllureUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
@@ -27,5 +28,6 @@ public class CreateAddressesStep extends BaseStep {
         yourAddressesPage.setMobilePhone(mobilePhone);
         yourAddressesPage.setState(state);
         yourAddressesPage.setNameAddressesField(nameAddresses);
+        AllureUtils.takeScreenshot(driver);
     }
 }

@@ -24,6 +24,7 @@ public class CartStep extends BaseStep {
         startPage.getWomenButton().click();
         womenPage.clickAddToCartTShirtButton();
         womenPage.checkoutClick();
+        AllureUtils.takeScreenshot(driver);
     }
 
     @Step("Delete from Cart")
@@ -32,5 +33,6 @@ public class CartStep extends BaseStep {
         shoppingCartSummaryPage.getDeleteButton().click();
         wait.until(ExpectedConditions.invisibilityOf(shoppingCartSummaryPage.getFadedShortSleeveTShirtField()));
         driver.navigate().refresh();
+        AllureUtils.takeScreenshot(driver);
     }
 }

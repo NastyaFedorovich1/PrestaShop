@@ -4,16 +4,19 @@ import com.prestashop.testing.pages.*;
 import com.prestashop.testing.steps.CartStep;
 import com.prestashop.testing.steps.CreateAccountStep;
 import com.prestashop.testing.steps.CreateAddressesStep;
-import com.prestashop.testing.utils.AllureUtils;
+import com.prestashop.testing.utils.TestListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 import java.time.Duration;
 
+@Listeners(TestListener.class)
 public class BaseTest {
 
     private WebDriver driver;
@@ -32,7 +35,7 @@ public class BaseTest {
     protected ShippingPage shippingPage;
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp(ITestContext context){
 
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -52,6 +55,8 @@ public class BaseTest {
         createAddressesStep = new CreateAddressesStep(driver);
         addressesPage = new AddressesPage(driver);
         shippingPage = new ShippingPage(driver);
+
+        context.setAttribute("driver", driver);
     }
 
     @AfterMethod(alwaysRun = true)
