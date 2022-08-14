@@ -17,7 +17,7 @@ public class PropertyReader {
         }
     }
 
-    public static int getTimeout(){
-        return Integer.parseInt(properties.getProperty("timeout"));
+    public static long getTimeout(){
+        return Long.parseLong(properties.getProperty("timeout"));
     }
 }

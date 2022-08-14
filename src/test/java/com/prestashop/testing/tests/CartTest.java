@@ -30,8 +30,7 @@ public class CartTest extends BaseTest {
     @Link("http://prestashop.qatestlab.com.ua/ru/order")
     public void OrderOneItemTest(){
         createAccountStep.proceedToAccountCreation();
-        createAccountStep.fillNewAccountFields("woman", "Nastya", "Fedorovich", "555888",
-                "2", "5", "1997");
+        createAccountStep.fillNewAccountFields("woman");
         createaccountpage.clickRegister();
         myaccountpage.getWomanButton().click();
         cartStep.addToCartTShirt();
@@ -51,8 +50,7 @@ public class CartTest extends BaseTest {
     @Link("http://prestashop.qatestlab.com.ua/ru/order")
     public void OrderOneItemWithoutTermsAgreementTest(){
         createAccountStep.proceedToAccountCreation();
-        createAccountStep.fillNewAccountFields("woman", "Nastya", "Fedorovich", "555888",
-                "2", "5", "1997");
+        createAccountStep.fillNewAccountFields("woman");
         createaccountpage.clickRegister();
         myaccountpage.getWomanButton().click();
         cartStep.addToCartTShirt();

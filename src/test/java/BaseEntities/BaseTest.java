@@ -1,9 +1,11 @@
 package BaseEntities;
 
+import com.prestashop.testing.User;
 import com.prestashop.testing.pages.*;
 import com.prestashop.testing.steps.CartStep;
 import com.prestashop.testing.steps.CreateAccountStep;
 import com.prestashop.testing.steps.CreateAddressesStep;
+import com.prestashop.testing.utils.PropertyReader;
 import com.prestashop.testing.utils.TestListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -37,11 +39,15 @@ public class BaseTest {
     @BeforeMethod
     public void setUp(ITestContext context){
 
+        PropertyReader propertyReader = new PropertyReader();
+        User user = new User();
+        long time = propertyReader.getTimeout();
+
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(25));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
 
         loginpage = new LoginPage(driver);
         startpage = new StartPage(driver);
@@ -60,7 +66,9 @@ public class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void closeBrowser() {
-        driver.quit();
+    public void closeBrowser () {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

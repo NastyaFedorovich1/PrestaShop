@@ -13,7 +13,7 @@ public class CreateAccountTest extends BaseTest {
     @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
     public void createManAccountTest() {
         createAccountStep.proceedToAccountCreation();
-        createAccountStep.fillNewAccountFields("man", "Mikita", "Fedorovich", "123456", "28", "2", "1998");
+        createAccountStep.fillNewAccountFields("man");
         createaccountpage.selectNewsletterCheckbox();
         createaccountpage.clickRegister();
         Assert.assertTrue(myaccountpage.getAccountCreateMessage().isDisplayed());
@@ -24,7 +24,7 @@ public class CreateAccountTest extends BaseTest {
     @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
     public void createWomanAccountTest() {
         createAccountStep.proceedToAccountCreation();
-        createAccountStep.fillNewAccountFields("woman", "Nastya", "Fedorovich", "879546", "2", "5", "1997");
+        createAccountStep.fillNewAccountFields("woman");
         createaccountpage.clickRegister();
         Assert.assertTrue(myaccountpage.getAccountCreateMessage().isDisplayed());
     }
@@ -44,7 +44,7 @@ public class CreateAccountTest extends BaseTest {
     @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
     public void createAccountWithoutLastNameTest(){
         createAccountStep.proceedToAccountCreation();
-        createAccountStep.fillNewAccountFields("woman", "Nastya", "Fedorovich", "", "2", "5", "1997");
+        createAccountStep.fillNewAccountFields("woman");
         createaccountpage.clickRegister();
         Assert.assertTrue(createaccountpage.getErrorMessage().isDisplayed());
     }

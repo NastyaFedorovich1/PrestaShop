@@ -15,6 +15,6 @@ public class LoginTest extends BaseTest {
     public void openLoginPageTest() {
         startpage.openPage();
         startpage.clickLogin();
-        Assert.assertEquals(loginpage.getAuthenticationField(), "5AUTHENTICATION");
+        Assert.assertEquals(loginpage.getAuthenticationField(), "AUTHENTICATION");
     }
 }
