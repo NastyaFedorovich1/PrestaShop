@@ -18,12 +18,16 @@ public class LoginPage extends BasePage {
     private By authenticationField = By.xpath("//*[text()='Authentication']");
     private By emailField = By.id("email_create");
     private By createButton = By.cssSelector(".icon-user.left");
+    private By errorMessage = By.xpath("//li[contains(text(),'Invalid email address.')]");
 
     FakeValuesService fakeValuesService = new FakeValuesService(
             new Locale("en-GB"), new RandomService());
 
     public String getAuthenticationField(){
         return driver.findElement(authenticationField).getText();
+    }
+    public WebElement getErrorMessage(){
+        return driver.findElement(errorMessage);
     }
 
     public WebElement getCreateButton(){
