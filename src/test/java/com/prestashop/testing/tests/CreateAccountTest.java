@@ -10,7 +10,7 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(description = "Create man Account")
     @Description("Create man Account")
-    @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
+    @Link(name = "Create account", url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account#account-creation")
     public void createManAccountTest() {
         createAccountStep.proceedToAccountCreation();
         createAccountStep.fillNewAccountFields("man");
@@ -21,7 +21,7 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(description = "Create woman Account")
     @Description("Create woman Account")
-    @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
+    @Link(name = "Create account", url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account#account-creation")
     public void createWomanAccountTest() {
         createAccountStep.proceedToAccountCreation();
         createAccountStep.fillNewAccountFields("woman");
@@ -31,7 +31,7 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(description = "Create Account Negative Test")
     @Description("Create Account without e-mail")
-    @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
+    @Link(name = "Login Page", url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
     public void createAccountWithoutEmailTest(){
         startpage.openPage();
         startpage.clickLogin();
@@ -41,10 +41,10 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(description = "Create Account Negative Test")
     @Description("Create Account without Last Name")
-    @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
+    @Link(name = "Create account", url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account#account-creation")
     public void createAccountWithoutLastNameTest(){
         createAccountStep.proceedToAccountCreation();
-        createAccountStep.fillNewAccountFields("woman");
+        createAccountStep.fillNewAccountFieldsWithoutEmail();
         createaccountpage.clickRegister();
         Assert.assertTrue(createaccountpage.getErrorMessage().isDisplayed());
     }

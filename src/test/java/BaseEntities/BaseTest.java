@@ -1,6 +1,5 @@
 package BaseEntities;
 
-import com.prestashop.testing.User;
 import com.prestashop.testing.pages.*;
 import com.prestashop.testing.steps.CartStep;
 import com.prestashop.testing.steps.CreateAccountStep;
@@ -40,7 +39,6 @@ public class BaseTest {
     public void setUp(ITestContext context){
 
         PropertyReader propertyReader = new PropertyReader();
-        User user = new User();
         long time = propertyReader.getTimeout();
 
         WebDriverManager.chromedriver().setup();

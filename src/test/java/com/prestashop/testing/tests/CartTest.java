@@ -10,7 +10,7 @@ public class CartTest extends BaseTest {
 
     @Test(description = "Add to Cart")
     @Description("Add to Cart T-Shirt")
-    @Link("http://prestashop.qatestlab.com.ua/ru/3-women")
+    @Link(name = "Woman Page", url = "http://prestashop.qatestlab.com.ua/ru/3-women")
     public void AddToCartTest(){
         cartStep.addToCartTShirt();
         Assert.assertTrue(shoppingCartSummaryPage.getFadedShortSleeveTShirtField().isDisplayed());
@@ -18,7 +18,7 @@ public class CartTest extends BaseTest {
 
     @Test(description = "Delete Product from Cart")
     @Description("Add to Cart and delete Product from Cart")
-    @Link("http://prestashop.qatestlab.com.ua/ru/order")
+    @Link(name = "Order Page", url = "http://prestashop.qatestlab.com.ua/ru/order")
     public void addToCartAndDeleteProductFromCartTest(){
         cartStep.addToCartTShirt();
         cartStep.deleteFromCart();
@@ -27,7 +27,7 @@ public class CartTest extends BaseTest {
 
     @Test(description = "Order Product")
     @Description("All Product order Steps")
-    @Link("http://prestashop.qatestlab.com.ua/ru/order")
+    @Link(name = "Order Page", url = "http://prestashop.qatestlab.com.ua/ru/order")
     public void OrderOneItemTest(){
         createAccountStep.proceedToAccountCreation();
         createAccountStep.fillNewAccountFields("woman");
@@ -35,9 +35,7 @@ public class CartTest extends BaseTest {
         myaccountpage.getWomanButton().click();
         cartStep.addToCartTShirt();
         shoppingCartSummaryPage.getProceedToCheckoutButton().click();
-        createAddressesStep.fillAddressesField("Nastya", "Fedorovich", "New York",
-                "12345", "New York", "21", "895467", "5463132", "32",
-                "Test");
+        createAddressesStep.fillAddressesField();
         yourAddressesPage.setSaveButton().click();
         addressesPage.getProceedToCheckoutButton().click();
         shippingPage.getAgreeWithTerms().click();
@@ -47,7 +45,7 @@ public class CartTest extends BaseTest {
 
     @Test(description = "Order Product without Terms Agreement")
     @Description("Order Product without Terms Agreement on Shipping Page")
-    @Link("http://prestashop.qatestlab.com.ua/ru/order")
+    @Link(name = "Order Page", url = "http://prestashop.qatestlab.com.ua/ru/order")
     public void OrderOneItemWithoutTermsAgreementTest(){
         createAccountStep.proceedToAccountCreation();
         createAccountStep.fillNewAccountFields("woman");
@@ -55,9 +53,7 @@ public class CartTest extends BaseTest {
         myaccountpage.getWomanButton().click();
         cartStep.addToCartTShirt();
         shoppingCartSummaryPage.getProceedToCheckoutButton().click();
-        createAddressesStep.fillAddressesField("Nastya", "Fedorovich", "New York",
-                "12345", "New York", "21", "895467", "5463132", "32",
-                "Test");
+        createAddressesStep.fillAddressesField();
         yourAddressesPage.setSaveButton().click();
         addressesPage.getProceedToCheckoutButton().click();
         shippingPage.getProceedToCheckoutButton().click();

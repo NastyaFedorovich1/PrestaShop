@@ -29,6 +29,7 @@ public class CreateAccountStep extends BaseStep {
 
     @Step("Fill field when create account")
     public void fillNewAccountFields(String gender) {
+
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 
         User man = User.builder()
@@ -69,5 +70,30 @@ public class CreateAccountStep extends BaseStep {
             createAccountPage.setYear(woman.getYear());
         }
         AllureUtils.takeScreenshot(driver);
+    }
+
+    @Step("Fill field when create account without last name")
+    public void fillNewAccountFieldsWithoutEmail() {
+
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+
+        User woman = User.builder()
+                .gender("woman")
+                .firstName("Nastya")
+                .lastName("Fedorovich")
+                .password("87654321")
+                .day("12")
+                .month("3")
+                .year("1997")
+                .build();
+
+            createAccountPage.selectWoman();
+            createAccountPage.setFirstName(woman.getFirstName());
+            createAccountPage.setPassword(woman.getPassword());
+            createAccountPage.setDay(woman.getDay());
+            createAccountPage.setMonth(woman.getMonth());
+            createAccountPage.setYear(woman.getYear());
+
+            AllureUtils.takeScreenshot(driver);
     }
 }

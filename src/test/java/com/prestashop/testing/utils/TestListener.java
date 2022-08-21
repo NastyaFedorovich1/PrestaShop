@@ -1,6 +1,5 @@
 package com.prestashop.testing.utils;
 
-import com.prestashop.testing.utils.AllureUtils;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +13,7 @@ public class TestListener implements ITestListener {
 
     public void onTestStart(ITestResult iTestResult) {
         System.out.println((String.format("======================================== STARTING TEST %s ========================================", iTestResult.getName())));
-        takeScreenshot(iTestResult);
+
     }
 
     public void onTestSuccess(ITestResult iTestResult) {
@@ -46,6 +45,7 @@ public class TestListener implements ITestListener {
                 return new byte[] {};
             }
         } catch (NoSuchSessionException | IllegalStateException ex){
+            System.out.println(ex);
             return new byte[] {};
         }
     }
