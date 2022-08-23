@@ -14,33 +14,20 @@ public class CreateAddressesStep extends BaseStep {
     }
 
     @Step("Fill Field Addresses")
-    public void fillAddressesField(){
+    public void fillAddressesField(User user){
 
         YourAddressesPage yourAddressesPage = new YourAddressesPage(driver);
 
-        User woman = User.builder()
-                .firstName("Nastya")
-                .lastName("Fedorovich")
-                .addresses("New York")
-                .postCode("12345")
-                .city("New York")
-                .country("21")
-                .phone("895467")
-                .mobilePhone("5463132")
-                .state("32")
-                .nameAddresses("Test")
-                .build();
-
-        yourAddressesPage.setFirstName(woman.getFirstName());
-        yourAddressesPage.setLastName(woman.getLastName());
-        yourAddressesPage.setAddressesField(woman.getAddresses());
-        yourAddressesPage.setPostCodeField(woman.getPostCode());
-        yourAddressesPage.setCityField(woman.getCity());
-        yourAddressesPage.setCountry(woman.getCountry());
-        yourAddressesPage.setPhoneField(woman.getPhone());
-        yourAddressesPage.setMobilePhone(woman.getMobilePhone());
-        yourAddressesPage.setState(woman.getState());
-        yourAddressesPage.setNameAddressesField(woman.getNameAddresses());
+        yourAddressesPage.setFirstName(user.getFirstName());
+        yourAddressesPage.setLastName(user.getLastName());
+        yourAddressesPage.setAddressesField(user.getAddresses());
+        yourAddressesPage.setPostCodeField(user.getPostCode());
+        yourAddressesPage.setCityField(user.getCity());
+        yourAddressesPage.setCountry(user.getCountry());
+        yourAddressesPage.setPhoneField(user.getPhone());
+        yourAddressesPage.setMobilePhone(user.getMobilePhone());
+        yourAddressesPage.setState(user.getState());
+        yourAddressesPage.setNameAddressesField(user.getNameAddresses());
         AllureUtils.takeScreenshot(driver);
     }
 }
