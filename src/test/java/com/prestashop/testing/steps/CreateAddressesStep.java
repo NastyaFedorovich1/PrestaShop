@@ -1,6 +1,7 @@
 package com.prestashop.testing.steps;
 
 import BaseEntities.BaseStep;
+import com.prestashop.testing.User;
 import com.prestashop.testing.pages.YourAddressesPage;
 import com.prestashop.testing.utils.AllureUtils;
 import io.qameta.allure.Step;
@@ -13,21 +14,20 @@ public class CreateAddressesStep extends BaseStep {
     }
 
     @Step("Fill Field Addresses")
-    public void fillAddressesField(String firstName, String lastName, String addresses, String postCode, String city,
-                                   String country, String phone, String mobilePhone, String state, String nameAddresses){
+    public void fillAddressesField(User user){
 
         YourAddressesPage yourAddressesPage = new YourAddressesPage(driver);
 
-        yourAddressesPage.setFirstName(firstName);
-        yourAddressesPage.setLastName(lastName);
-        yourAddressesPage.setAddressesField(addresses);
-        yourAddressesPage.setPostCodeField(postCode);
-        yourAddressesPage.setCityField(city);
-        yourAddressesPage.setCountry(country);
-        yourAddressesPage.setPhoneField(phone);
-        yourAddressesPage.setMobilePhone(mobilePhone);
-        yourAddressesPage.setState(state);
-        yourAddressesPage.setNameAddressesField(nameAddresses);
+        yourAddressesPage.setFirstName(user.getFirstName());
+        yourAddressesPage.setLastName(user.getLastName());
+        yourAddressesPage.setAddressesField(user.getAddresses());
+        yourAddressesPage.setPostCodeField(user.getPostCode());
+        yourAddressesPage.setCityField(user.getCity());
+        yourAddressesPage.setCountry(user.getCountry());
+        yourAddressesPage.setPhoneField(user.getPhone());
+        yourAddressesPage.setMobilePhone(user.getMobilePhone());
+        yourAddressesPage.setState(user.getState());
+        yourAddressesPage.setNameAddressesField(user.getNameAddresses());
         AllureUtils.takeScreenshot(driver);
     }
 }

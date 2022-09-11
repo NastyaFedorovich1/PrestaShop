@@ -28,46 +28,37 @@ public class CreateAccountStep extends BaseStep {
     }
 
     @Step("Fill field when create account")
-    public void fillNewAccountFields(String gender) {
+    public void fillNewAccountFields(User user) {
+
         CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 
-        User man = User.builder()
-                .gender("man")
-                .firstName("Nikita")
-                .lastName("Fedorovich")
-                .password("123456789")
-                .day("2")
-                .month("2")
-                .year("1998")
-                .build();
-
-        User woman = User.builder()
-                .gender("woman")
-                .firstName("Nastya")
-                .lastName("Fedorovich")
-                .password("87654321")
-                .day("12")
-                .month("3")
-                .year("1997")
-                .build();
-
-        if (gender.equals("man")) {
+        if (user.getGender().equals("man")) {
             createAccountPage.selectMan();
-            createAccountPage.setFirstName(man.getFirstName());
-            createAccountPage.setLastName(man.getLastName());
-            createAccountPage.setPassword(man.getPassword());
-            createAccountPage.setDay(man.getDay());
-            createAccountPage.setMonth(man.getMonth());
-            createAccountPage.setYear(man.getYear());
         } else {
             createAccountPage.selectWoman();
-            createAccountPage.setFirstName(woman.getFirstName());
-            createAccountPage.setLastName(woman.getLastName());
-            createAccountPage.setPassword(woman.getPassword());
-            createAccountPage.setDay(woman.getDay());
-            createAccountPage.setMonth(woman.getMonth());
-            createAccountPage.setYear(woman.getYear());
         }
+        createAccountPage.setFirstName(user.getFirstName());
+        createAccountPage.setLastName(user.getLastName());
+        createAccountPage.setPassword(user.getPassword());
+        createAccountPage.setDay(user.getDay());
+        createAccountPage.setMonth(user.getMonth());
+        createAccountPage.setYear(user.getYear());
+
+        AllureUtils.takeScreenshot(driver);
+    }
+
+    @Step("Fill field when create account without last name")
+    public void fillNewAccountFieldsWithoutLastName(User user) {
+
+        CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+
+        createAccountPage.selectWoman();
+        createAccountPage.setFirstName(user.getFirstName());
+        createAccountPage.setPassword(user.getPassword());
+        createAccountPage.setDay(user.getDay());
+        createAccountPage.setMonth(user.getMonth());
+        createAccountPage.setYear(user.getYear());
+
         AllureUtils.takeScreenshot(driver);
     }
 }

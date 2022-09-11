@@ -1,6 +1,7 @@
 package com.prestashop.testing.tests;
 
 import BaseEntities.BaseTest;
+import com.prestashop.testing.User;
 import io.qameta.allure.Description;
 import io.qameta.allure.Link;
 import org.testng.Assert;
@@ -10,10 +11,19 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(description = "Create man Account")
     @Description("Create man Account")
-    @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
+    @Link(name = "Create account", url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account#account-creation")
     public void createManAccountTest() {
         createAccountStep.proceedToAccountCreation();
-        createAccountStep.fillNewAccountFields("man");
+        createAccountStep.fillNewAccountFields(
+                User.builder()
+                        .gender("man")
+                        .firstName("Nikita")
+                        .lastName("Fedorovich")
+                        .password("123456789")
+                        .day("2")
+                        .month("2")
+                        .year("1998")
+                        .build());
         createaccountpage.selectNewsletterCheckbox();
         createaccountpage.clickRegister();
         Assert.assertTrue(myaccountpage.getAccountCreateMessage().isDisplayed());
@@ -21,18 +31,27 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(description = "Create woman Account")
     @Description("Create woman Account")
-    @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
+    @Link(name = "Create account", url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account#account-creation")
     public void createWomanAccountTest() {
         createAccountStep.proceedToAccountCreation();
-        createAccountStep.fillNewAccountFields("woman");
+        createAccountStep.fillNewAccountFields(
+                User.builder()
+                        .gender("woman")
+                        .firstName("Anastasia")
+                        .lastName("Fedorovich")
+                        .password("123456789")
+                        .day("12")
+                        .month("3")
+                        .year("1997")
+                        .build());
         createaccountpage.clickRegister();
         Assert.assertTrue(myaccountpage.getAccountCreateMessage().isDisplayed());
     }
 
     @Test(description = "Create Account Negative Test")
     @Description("Create Account without e-mail")
-    @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
-    public void createAccountWithoutEmailTest(){
+    @Link(name = "Login Page", url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
+    public void createAccountWithoutEmailTest() {
         startpage.openPage();
         startpage.clickLogin();
         loginpage.clickCreate();
@@ -41,10 +60,18 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(description = "Create Account Negative Test")
     @Description("Create Account without Last Name")
-    @Link("http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account")
-    public void createAccountWithoutLastNameTest(){
+    @Link(name = "Create account", url = "http://prestashop.qatestlab.com.ua/ru/authentication?back=my-account#account-creation")
+    public void createAccountWithoutLastNameTest() {
         createAccountStep.proceedToAccountCreation();
-        createAccountStep.fillNewAccountFields("woman");
+        createAccountStep.fillNewAccountFieldsWithoutLastName(
+                User.builder()
+                        .gender("woman")
+                        .firstName("Nastya")
+                        .password("87654321")
+                        .day("12")
+                        .month("3")
+                        .year("1997")
+                        .build());
         createaccountpage.clickRegister();
         Assert.assertTrue(createaccountpage.getErrorMessage().isDisplayed());
     }

@@ -26,6 +26,7 @@ public class LoginPage extends BasePage {
     public String getAuthenticationField(){
         return driver.findElement(authenticationField).getText();
     }
+
     public WebElement getErrorMessage(){
         return driver.findElement(errorMessage);
     }
